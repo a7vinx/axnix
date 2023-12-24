@@ -42,7 +42,7 @@
   home.file.".config/nvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/a7vinx/axnvim.git";
-      rev = "98fd4af2bdd9fb72c2295c5b776449ffd64436a4";
+      rev = "fa26a68ad98bfe75f3fcbda2066981a25ee5fd32";
     };
   };
 
