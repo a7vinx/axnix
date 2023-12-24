@@ -26,9 +26,12 @@
     initExtra = "bindkey '^e' autosuggest-accept";
   };
 
-  # home.file.".config/nvim" = {
-  #   source = ./nvim;
-  # };
+  home.file.".config/nvim" = {
+    source = builtins.fetchGit {
+      url = "https://github.com/a7vinx/axnvim.git";
+      rev = "98fd4af2bdd9fb72c2295c5b776449ffd64436a4";
+    };
+  };
 
   programs = {
     tmux.enable = true;
