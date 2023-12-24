@@ -22,6 +22,19 @@
       enable = true;
       editor.keymap = "vi";
       prompt.theme = "sorin";
+      pmodules = [
+        "environment"
+        "terminal"
+        "editor"
+        "history"
+        "directory"
+        "spectrum"
+        "utility"
+        "completion"
+        "git"
+        "syntax-highlighting"
+        "prompt"
+      ];
     };
     initExtra = "bindkey '^e' autosuggest-accept";
   };
