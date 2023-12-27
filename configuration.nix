@@ -153,6 +153,11 @@
     config.adminpassFile = "/home/secrets/nextcloud-root-pass";
   };
 
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+  };
+
   programs.zsh.enable = true;
   users.users.arvinx = {
     shell = pkgs.zsh;
