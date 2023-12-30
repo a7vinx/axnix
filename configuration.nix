@@ -171,4 +171,27 @@
     setSocketVariable = true;
   };
 
+  virtualisation.oci-containers.containers = let
+    bdcloudImg = pkgs.dockerTools.pullImage {
+      imageName = "a7vinx/bypy";
+      imageDigest = "sha256:fc96767da550dd414acf0f0df9d0780059f975a31edf5de62df052caff5ff72b";
+      sha256 = "sha256-xVcQUyW5GNzCloUCPwtCcBD/HZYkv945/v+6gRc+KFk=";
+    };
+  in {
+    bdcloud = {
+      imageFile = bdcloudImg;
+      image = "a7vinx/bypy";
+      user = "nobody";
+      cmd = [ "--config-dir" "/bypy/conf" "syncdown" "/" "/bypy/data" ];
+      volumes = [
+        "/mnt/media/bdcloud:/bypy"
+      ];
+    };
+  };
+
+  systemd.services.podman-bdcloud.serviceConfig = {
+    Restart = "always";
+    RestartSec = 600;
+  };
+
 }
