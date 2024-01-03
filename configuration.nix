@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./pkgs/frpc.nix
     ];
 
   # Bootloader.
@@ -156,6 +157,12 @@
   services.plex = {
     enable = true;
     openFirewall = true;
+  };
+
+  services.frpc = {
+    enable = true;
+    role = "client";
+    configFile = "/home/secrets/frpc-conf";
   };
 
   programs.zsh.enable = true;
