@@ -15,7 +15,12 @@
         system = "x86_64-linux";
 
         modules = [
-          ./configuration.nix
+	  ./hardware.nix
+          ./base.nix
+	  ./users.nix
+	  ./mounts.nix
+	  ./services.nix
+	  ./virtualisation.nix
 
           home-manager.nixosModules.home-manager
           {

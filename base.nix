@@ -5,11 +5,7 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./pkgs/frpc.nix
-    ];
+  imports = [];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -80,17 +76,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.arvinx = {
-    isNormalUser = true;
-    description = "Arvin Hsu";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-    #  thunderbird
-    ];
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -133,73 +118,4 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  virtualisation.vmware.guest.enable = true;
-
-  # Get zsh-completion for system packages (e.g. systemd).
-  environment.pathsToLink = [ "/share/zsh" ];
-
-  fileSystems."/mnt/data" = {
-    device = "/dev/sdb1";
-  };
-
-  fileSystems."/mnt/media" = {
-    device = "/dev/sdc2";
-  };
-
-  services.nextcloud = {
-    enable = true;
-    home = "/mnt/data";
-    hostName = "192.168.50.245";
-    config.adminpassFile = "/home/secrets/nextcloud-root-pass";
-  };
-
-  services.plex = {
-    enable = true;
-    openFirewall = true;
-  };
-
-  services.frpc = {
-    enable = true;
-    role = "client";
-    configFile = "/home/secrets/frpc-conf";
-  };
-
-  programs.zsh.enable = true;
-  users.users.arvinx = {
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1dbhS58A6qfq28ynJRliK8NbyDh0iq+mfPqPiGyE3g axcore-windows"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBC7yu2BKXn22kHy8KTLQH8URzvT8SrS2sjjrzLSg6O6 axws-edge"
-    ];
-  };
-
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
-
-  virtualisation.oci-containers.containers = let
-    bdcloudImg = pkgs.dockerTools.pullImage {
-      imageName = "a7vinx/bypy";
-      imageDigest = "sha256:fc96767da550dd414acf0f0df9d0780059f975a31edf5de62df052caff5ff72b";
-      sha256 = "sha256-xVcQUyW5GNzCloUCPwtCcBD/HZYkv945/v+6gRc+KFk=";
-    };
-  in {
-    bdcloud = {
-      imageFile = bdcloudImg;
-      image = "a7vinx/bypy";
-      user = "nobody";
-      cmd = [ "--config-dir" "/bypy/conf" "syncdown" "/" "/bypy/data" ];
-      volumes = [
-        "/mnt/media/bdcloud:/bypy"
-      ];
-    };
-  };
-
-  systemd.services.podman-bdcloud.serviceConfig = {
-    Restart = "always";
-    RestartSec = 600;
-  };
-
 }
