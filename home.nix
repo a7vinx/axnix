@@ -52,6 +52,7 @@
     btop.enable = true;
     bat.enable = true;
     fzf.enable = true;
+    ripgrep.enable = true;
   };
 
 }
