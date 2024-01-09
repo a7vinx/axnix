@@ -14,7 +14,8 @@
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1dbhS58A6qfq28ynJRliK8NbyDh0iq+mfPqPiGyE3g axcore-windows"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBC7yu2BKXn22kHy8KTLQH8URzvT8SrS2sjjrzLSg6O6 axws-edge"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINygwNSMQYpHle3jVoFTd66DBPJV/JNSA6RcjvK4tZUl axws-edge"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGZWZFUT61DAymiux7LRw5AmcOj7xCCIkRcvCAhGovry axedge-phone"
     ];
   };
 }
