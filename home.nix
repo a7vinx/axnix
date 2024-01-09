@@ -1,6 +1,17 @@
 { config, pkgs, ... }:
 
-{
+let
+  vscodeModSrc = {
+    url = "https://github.com/msteen/nixos-vscode-server/tarball/1e1358493df6529d4c7bc4cc3066f76fd16d4ae6";
+    sha256 = "0sz8njfxn5bw89n6xhlzsbxkafb6qmnszj4qxy2w0hw2mgmjp829";
+  };
+in {
+  imports = [
+    "${fetchTarball vscodeModSrc}/modules/vscode-server/home.nix"
+  ];
+
+  services.vscode-server.enable = true;
+
   home.username = "arvinx";
   home.homeDirectory = "/home/arvinx";
 
@@ -37,13 +48,6 @@
       ];
     };
     initExtra = "bindkey '^e' autosuggest-accept";
-  };
-
-  home.file.".config/nvim" = {
-    source = builtins.fetchGit {
-      url = "https://github.com/a7vinx/axnvim.git";
-      rev = "fa26a68ad98bfe75f3fcbda2066981a25ee5fd32";
-    };
   };
 
   programs = {
