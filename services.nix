@@ -5,6 +5,8 @@
     ./pkgs/frpc.nix
   ];
 
+  services.openssh.enable = true;
+
   services.nextcloud = {
     enable = true;
     home = "/mnt/data";

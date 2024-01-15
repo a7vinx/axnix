@@ -17,6 +17,8 @@
         modules = [
 	  ./hardware.nix
           ./base.nix
+	  ./network.nix
+	  ./gui.nix
 	  ./users.nix
 	  ./mounts.nix
 	  ./services.nix
