@@ -42,6 +42,7 @@
           ./users.nix
           ./virtualisation.nix
           ./services.nix
+          ./axws-core/hardware.nix
           ./axws-core/network.nix
 
           home-manager.nixosModules.home-manager {
