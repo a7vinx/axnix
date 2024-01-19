@@ -38,6 +38,18 @@
         system = "x86_64-linux";
 
         modules = [
+          ./base.nix
+          ./users.nix
+          ./virtualisation.nix
+          ./services.nix
+          ./axws-core/network.nix
+
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.arvinx = import ./home.nix;
+          }
         ];
       };
 
