@@ -11,29 +11,39 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs : {
     nixosConfigurations = {
+      arvinx = home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+
+        home-manager.users.arvinx = import ./home.nix;
+      };
+
       axcore-nix = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
-	  ./hardware.nix
           ./base.nix
-	  ./network.nix
-	  ./gui.nix
 	  ./users.nix
-	  ./mounts.nix
-	  ./services.nix
 	  ./virtualisation.nix
+	  ./services.nix
+	  ./axcore-nix/hardware.nix
+	  ./axcore-nix/network.nix
+	  ./axcore-nix/gui.nix
+	  ./axcore-nix/mounts.nix
+	  ./axcore-nix/services.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.users.arvinx = import ./home.nix;
-          }
+          arvinx
         ];
-
       };
+
+      axws-core = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          arvinx
+        ];
+      };
+
     };
   };
 }
