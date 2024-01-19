@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./pkgs/frpc.nix
   ];
 
   services.nextcloud = {

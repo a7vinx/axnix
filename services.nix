@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./pkgs/frpc.nix
   ];
 
   services.openssh.enable = true;
