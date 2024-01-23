@@ -16,6 +16,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1dbhS58A6qfq28ynJRliK8NbyDh0iq+mfPqPiGyE3g axcore-windows"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINygwNSMQYpHle3jVoFTd66DBPJV/JNSA6RcjvK4tZUl axws-edge"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGZWZFUT61DAymiux7LRw5AmcOj7xCCIkRcvCAhGovry axedge-phone"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBZUSxSI0+f8AhZN/G9s60Ym+Rl5Uh4dWKmeEAKzLunC axedge-mac"
     ];
   };
 }
