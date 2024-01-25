@@ -59,6 +59,8 @@
      neovim
      btrfs-progs
      git
+     zip
+     unzip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
