@@ -6,9 +6,26 @@
 
   services.nextcloud = {
     enable = true;
-    home = "/mnt/data";
+    home = "/mnt/data/nextcloud";
     hostName = "192.168.50.245";
     config.adminpassFile = "/home/secrets/nextcloud-root-pass";
+  };
+
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    shares = {
+      tm-axedge-mac = {
+        path = "/mnt/data/time-machine/axedge-mac";
+	public = "no";
+	browsable = "yes";
+	writable = "yes";
+	"valid users" = "tm-axedge-mac";
+	"fruit:aapl" = "yes";
+	"fruit:time machine" = "yes";
+	"vfs objects" = "catia fruit streams_xattr";
+      };
+    };
   };
 
   services.plex = {
