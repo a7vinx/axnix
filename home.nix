@@ -18,6 +18,11 @@ in {
   home.stateVersion = "23.11";
   home.packages = with pkgs;[
     kubectl
+    (wrapHelm kubernetes-helm {
+      plugins = with pkgs.kubernetes-helmPlugins; [
+        helm-diff
+      ];
+    })
   ];
 
   programs.home-manager.enable = true;
