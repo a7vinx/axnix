@@ -21,6 +21,7 @@
 	  ./services.nix
 	  ./axcore-nix/hardware.nix
 	  ./axcore-nix/network.nix
+	  ./axcore-nix/users.nix
 	  ./axcore-nix/gui.nix
 	  ./axcore-nix/mounts.nix
 	  ./axcore-nix/services.nix
@@ -44,6 +45,8 @@
           ./services.nix
           ./axws-core/hardware.nix
           ./axws-core/network.nix
+          ./axws-core/users.nix
+          ./axws-core/services.nix
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;

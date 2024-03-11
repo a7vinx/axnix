@@ -19,12 +19,4 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBZUSxSI0+f8AhZN/G9s60Ym+Rl5Uh4dWKmeEAKzLunC axedge-mac"
     ];
   };
-
-  users.groups.time-machine.members = [
-    "tm-axedge-mac"
-  ];
-  users.users.tm-axedge-mac = {
-    isSystemUser = true;
-    group = "time-machine";
-  };
 }
